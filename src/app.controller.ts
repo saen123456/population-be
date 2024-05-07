@@ -12,7 +12,7 @@ export class AppController {
     return this.appService.getHello();
   }
 
-  @Get()
+  @Get('/getAllPoppulation')
   async getDataFromExcel() {
     return this.appService.getDataFromExcel();
   }

@@ -21,7 +21,17 @@ export class AppService {
           .on('error', (error) => reject(error));
       });
       dataPopulation = results;
-      console.log(dataPopulation);
+
+      const groupedData = dataPopulation.reduce((acc, obj) => {
+        const key = obj['Country name'];
+        if (!acc[key]) {
+          acc[key] = [];
+        }
+        acc[key].push(obj);
+        return acc;
+      }, {});
+
+      return groupedData;
     } catch (error) {
       console.log(`Error reading JSON file: ${error.message}`);
     }
