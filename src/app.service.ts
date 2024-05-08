@@ -13,7 +13,15 @@ export class AppService {
   async getDataFromExcel() {
     try {
       const results = [];
-      const filePath = path.join('population-and-demography.csv');
+      console.log(`Current working directory: ${process.cwd()}`);
+
+      const filePath = path.join(
+        __dirname,
+        '..',
+        'population-and-demography.csv',
+      );
+
+      console.log(`Looking for file at: ${filePath}`);
 
       await new Promise((resolve, reject) => {
         fs.createReadStream(filePath)
