@@ -33,11 +33,15 @@ export class AppService {
       dataPopulation = results;
 
       const groupedData = dataPopulation.reduce((acc, obj) => {
-        const key = obj['Country name'];
+        const key = obj['Year'];
         if (!acc[key]) {
           acc[key] = [];
         }
-        acc[key].push(obj);
+        const country = {
+          country: obj['Country name'],
+          population: obj['Population'],
+        };
+        acc[key].push(country);
         return acc;
       }, {});
 
