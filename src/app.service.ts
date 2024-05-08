@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import * as fs from 'fs';
 import * as csvParser from 'csv-parser';
+import * as path from 'path';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 let dataPopulation: any[] = [];
 @Injectable()
@@ -12,7 +13,8 @@ export class AppService {
   async getDataFromExcel() {
     try {
       const results = [];
-      const filePath = 'population-and-demography.csv';
+      const filePath = path.join('population-and-demography.csv');
+
       await new Promise((resolve, reject) => {
         fs.createReadStream(filePath)
           .pipe(csvParser())
