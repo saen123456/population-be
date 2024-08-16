@@ -5,15 +5,6 @@ import * as path from 'path';
 import * as _ from 'lodash';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 let dataPopulation: any[] = [];
-
-interface CountryPopulation {
-  country: string;
-  population: string; // Population is a string, so it needs to be converted to a number for sorting
-}
-
-interface PopulationData {
-  [key: string]: CountryPopulation[];
-}
 @Injectable()
 export class AppService {
   getHello(): string {
@@ -42,7 +33,7 @@ export class AppService {
       });
       dataPopulation = results;
 
-      let nameCountryExcept = [
+      const nameCountryExcept = [
         'World',
         'Less developed regions',
         'Less developed regions, excluding least developed countries',
